@@ -1,3 +1,6 @@
+* {
+  font-family: "EB Garamond", serif;
+}
 body {
   margin: 0;
 }
@@ -7,10 +10,36 @@ h1 {
   font-weight: bold;
 }
 
-@keyframes fadeIn {
+@keyframes fadeInOut {
   0% {
     opacity: 0;
     transform: translateY(20px);
+    z-index: 5;
+  }
+
+  25% {
+    transform: translate(0);
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  90% {
+    transform: translateY(-20px);
+  }
+
+  100% {
+    transform: translateY(-20px);
+    opacity: 0;
+    z-index: -5;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
   }
 
   50% {
@@ -26,5 +55,13 @@ h1 {
   opacity: 0;
   animation-name: fadeIn;
   animation-duration: 2s;
+  animation-delay: 3s;
+  animation-fill-mode: forwards;
+}
+
+.appear-disappear {
+  opacity: 0;
+  animation-name: fadeInOut;
+  animation-duration: 4s;
   animation-fill-mode: forwards;
 }
