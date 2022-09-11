@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 import Layout from "../components/layout"
 import Seo from "../components/seo"
-import Intro from "../components/intro"
+import Intro from "../components/Intro"
 
 const IndexPage = () => (
   <>
