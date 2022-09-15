@@ -52,11 +52,25 @@ h1 {
   }
 }
 
-.appear {
+.appear-delay {
   opacity: 0;
   animation-name: fadeIn;
   animation-duration: 2s;
   animation-delay: 3s;
+  animation-fill-mode: forwards;
+}
+
+.appear {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+.appear-1 {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
@@ -65,4 +79,46 @@ h1 {
   animation-name: fadeInOut;
   animation-duration: 4s;
   animation-fill-mode: forwards;
+}
+
+.thumbnail {
+  height: 200px;
+  object-fit: cover;
+  scale: 1;
+  transition: scale 0.5s;
+}
+
+@media (min-width: 960px) {
+  .thumbnail {
+    height: auto;
+    max-height: 500px;
+  }
+  .preview {
+    max-height: 90vh;
+  }
+}
+
+.preview {
+  z-index: 5;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.preview-modal {
+  background: rgba(0, 0, 0, 0.548);
+  z-index: 1;
+}
+
+.thumbnail:hover,
+.thumbnail:focus {
+  scale: 1.05;
+  cursor: pointer;
+}
+
+.preview-modal + main {
+  -webkit-filter: blur(1px);
+  -moz-filter: blur(1px);
+  -o-filter: blur(1px);
+  -ms-filter: blur(1px);
+  filter: blur(1px);
 }
