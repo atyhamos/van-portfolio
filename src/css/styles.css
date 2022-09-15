@@ -99,7 +99,6 @@ h1 {
 }
 
 .preview {
-  z-index: 5;
   max-width: 100%;
   object-fit: contain;
 }
@@ -113,12 +112,4 @@ h1 {
 .thumbnail:focus {
   scale: 1.05;
   cursor: pointer;
-}
-
-.preview-modal + main {
-  -webkit-filter: blur(1px);
-  -moz-filter: blur(1px);
-  -o-filter: blur(1px);
-  -ms-filter: blur(1px);
-  filter: blur(1px);
 }

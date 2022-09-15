@@ -30,7 +30,7 @@ const IllustrationPage = () => {
   return (
     <>
       {modalOpen && (
-        <div className="container-fluid position-absolute vh-100 preview-modal">
+        <div className="container-fluid position-fixed vh-100 preview-modal">
           <div className="d-flex flex-column container-xxl justify-content-center align-items-center w-100 h-100">
             <img src={modalImage} className="preview appear-1" />
             <button className="btn btn-dark w-25" onClick={toggleModal}>
