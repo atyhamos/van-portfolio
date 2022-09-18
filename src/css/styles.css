@@ -73,10 +73,6 @@ h1 {
 }
 
 @media (min-width: 970px) {
-  .image-thumbnail {
-    /* height: 250px;
-    width: 250px; */
-  }
   .preview {
     height: 80vh;
     max-height: 90vh;
