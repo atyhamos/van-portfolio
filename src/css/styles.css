@@ -4,11 +4,22 @@
 
 body {
   margin: 0;
+  box-sizing: border-box;
 }
 
 h1 {
   font-family: "EB Garamond", serif;
   font-weight: bold;
+}
+
+.carousel-work {
+  display: block;
+  padding: auto;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  object-fit: cover;
+  object-position: center;
 }
 
 @keyframes fadeInOut {
@@ -52,48 +63,22 @@ h1 {
   }
 }
 
-.appear-delay {
-  opacity: 0;
-  animation-name: fadeIn;
-  animation-duration: 2s;
-  animation-delay: 3s;
-  animation-fill-mode: forwards;
-}
-
-.appear {
-  opacity: 0;
-  animation-name: fadeIn;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-}
-
-.appear-1 {
-  opacity: 0;
-  animation-name: fadeIn;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
-}
-
-.appear-disappear {
-  opacity: 0;
-  animation-name: fadeInOut;
-  animation-duration: 4s;
-  animation-fill-mode: forwards;
-}
-
-.thumbnail {
-  height: 200px;
+.image-thumbnail {
+  width: 100%;
+  padding: 1em;
+  margin: 0;
   object-fit: cover;
   scale: 1;
   transition: scale 0.5s;
 }
 
-@media (min-width: 960px) {
-  .thumbnail {
-    height: auto;
-    max-height: 500px;
+@media (min-width: 970px) {
+  .image-thumbnail {
+    /* height: 250px;
+    width: 250px; */
   }
   .preview {
+    height: 80vh;
     max-height: 90vh;
   }
 }
@@ -108,8 +93,8 @@ h1 {
   z-index: 1;
 }
 
-.thumbnail:hover,
-.thumbnail:focus {
+.image-thumbnail:hover,
+.image-thumbnail:focus {
   scale: 1.05;
   cursor: pointer;
 }
