@@ -8,43 +8,49 @@ import WorkCarousel from "../components/workcarousel"
 
 const IndexPage = () => {
   const controls = useAnimationControls()
-  const storage = window.localStorage
-  const timestamp = JSON.parse(storage.getItem("timestamp") || "1000")
+  // const isBrowser = typeof window !== "undefined"
+  // let loadIntro = 1
+  // if (isBrowser) {
+  //   window.localStorage.getItem("isLoggedIn") === "true"
+  //   const storage = window.localStorage
+  //   const timestamp = JSON.parse(storage.getItem("timestamp") || "1000")
 
-  const timeLimit = 10 * 60 * 1000 // 10 minutes
+  //   const timeLimit = 10 * 60 * 1000 // 10 minutes
 
-  const loadIntro = Date.now() - timestamp > timeLimit
+  //   loadIntro = Date.now() - timestamp > timeLimit
 
-  useEffect(() => {
-    loadIntro
-      ? storage.setItem("timestamp", Date.now().toString())
-      : storage.setItem("timestamp", timestamp.toString())
-  }, [])
+  // }
+  // useEffect(() => {
+  //   loadIntro
+  //     ? storage.setItem("timestamp", Date.now().toString())
+  //     : storage.setItem("timestamp", timestamp.toString())
+  // }, [])
 
-  if (loadIntro) {
-    return (
-      <>
-        <FadeIntro controls={controls} />
-        <motion.main
-          initial={{ x: "5%", opacity: 0 }}
-          animate={controls} // to control animation sequence
-        >
-          <NavigationBar />
-          <WorkCarousel />
-        </motion.main>
-      </>
-    )
-  }
+  // if (loadIntro) {
   return (
-    <motion.main
-      initial={{ x: "5%", opacity: 0 }}
-      animate={{ x: 0, opacity: [0, 1], transition: { duration: 1 } }}
-    >
-      <NavigationBar />
-      <WorkCarousel />
-    </motion.main>
+    <>
+      <FadeIntro controls={controls} />
+      <motion.main
+        initial={{ x: "5%", opacity: 0 }}
+        animate={controls} // to control animation sequence
+      >
+        <NavigationBar />
+        <WorkCarousel />
+      </motion.main>
+    </>
   )
 }
+//   }
+//   return (
+//     <motion.main
+//       initial={{ x: "5%", opacity: 0 }}
+//       animate={{ x: 0, opacity: [0, 1], transition: { duration: 1 } }}
+//     >
+//       <NavigationBar />
+//       <WorkCarousel />
+//     </motion.main>
+//   )
+// }
 
 export const Head = () => <Seo title="Home"></Seo>
 
