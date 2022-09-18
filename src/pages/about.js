@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react"
-import { Link } from "gatsby"
+import React from "react"
 
 import Seo from "../components/seo"
 import NavigationBar from "../components/navigation"
