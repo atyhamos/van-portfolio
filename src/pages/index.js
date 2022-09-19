@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 
 import Seo from "../components/seo"
 import NavigationBar from "../components/navigation"
@@ -6,51 +6,32 @@ import { motion, useAnimationControls } from "framer-motion"
 import FadeIntro from "../components/fadeintro"
 import WorkCarousel from "../components/workcarousel"
 
-const IndexPage = () => {
+const IndexPage = ({ location }) => {
   const controls = useAnimationControls()
-  const isBrowser = typeof window !== "undefined"
-
-  const checkLoadIntro = () => {
-    const storage = window.localStorage
-    const timestamp = JSON.parse(storage.getItem("timestamp") || "1000")
-
-    const timeLimit = 10 * 60 * 1000 // 10 minutes
-
-    const loadIntro = Date.now() - timestamp > timeLimit
-    loadIntro
-      ? storage.setItem("timestamp", Date.now().toString())
-      : storage.setItem("timestamp", timestamp.toString())
-    return loadIntro
-  }
-
-  useEffect(() => {
-    if (isBrowser) {
-      checkLoadIntro()
-    }
-  }, [isBrowser])
-
-  if (isBrowser && checkLoadIntro()) {
+  if (location.hash) {
     return (
-      <>
-        <FadeIntro controls={controls} />
-        <motion.main
-          initial={{ x: "5%", opacity: 0 }}
-          animate={controls} // to control animation sequence
-        >
-          <NavigationBar />
-          <WorkCarousel />
-        </motion.main>
-      </>
+      <motion.main
+        id="main"
+        initial={{ x: "5%", opacity: 0 }}
+        animate={{ x: 0, opacity: [0, 1], transition: { duration: 1 } }} // to control animation sequence
+      >
+        <NavigationBar />
+        <WorkCarousel />
+      </motion.main>
     )
   }
   return (
-    <motion.main
-      initial={{ x: "5%", opacity: 0 }}
-      animate={{ x: 0, opacity: [0, 1], transition: { duration: 1 } }}
-    >
-      <NavigationBar />
-      <WorkCarousel />
-    </motion.main>
+    <>
+      <FadeIntro controls={controls} />
+      <motion.main
+        id="main"
+        initial={{ x: "5%", opacity: 0 }}
+        animate={controls} // to control animation sequence
+      >
+        <NavigationBar />
+        <WorkCarousel />
+      </motion.main>
+    </>
   )
 }
 
