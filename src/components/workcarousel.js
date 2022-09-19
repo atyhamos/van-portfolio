@@ -12,7 +12,7 @@ const WorkCarousel = () => {
         {works.map(work => {
           return (
             <Carousel.Item style={{ height: "600px" }}>
-              <Image fluid src={work} className="carousel-work" />
+              <Image src={work} className="carousel-work" />
             </Carousel.Item>
           )
         })}

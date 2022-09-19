@@ -27,7 +27,7 @@ const NavigationBar = () => {
               </Link>
             </Nav.Link>
             <Nav.Link>
-              <Link className="nav-links" to="/life">
+              <Link className="nav-links" to="/life-drawing">
                 Life Drawing
               </Link>
             </Nav.Link>

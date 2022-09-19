@@ -32,5 +32,13 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify`,
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "Hygraph",
+        fieldName: "hygraph",
+        url: "https://api-ap-southeast-2.hygraph.com/v2/cl87bd94c0ffv01ujbb3f3m0f/master",
+      },
+    },
   ],
 }

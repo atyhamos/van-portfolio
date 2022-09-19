@@ -1,12 +1,11 @@
 import React, { useState } from "react"
 import { motion } from "framer-motion"
-
+import { useStaticQuery, graphql } from "gatsby"
 import Seo from "../components/seo"
 
 import NavigationBar from "../components/navigation"
-import { CloseButton, Image, Modal } from "react-bootstrap"
+import { Image } from "react-bootstrap"
 import ImageModal from "../components/imagemodal"
-import { illustrations } from "../data/illustrations"
 
 const IllustrationPage = () => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -28,7 +27,18 @@ const IllustrationPage = () => {
     msFilter: "blur(1px)",
     filter: "blur(1px)",
   }
-
+  const data = useStaticQuery(graphql`
+    query PhotosQuery {
+      hygraph {
+        photos(first: 20) {
+          image {
+            url
+          }
+        }
+      }
+    }
+  `)
+  const illustrations = data.hygraph.photos.map(photo => photo.image.url)
   return (
     <>
       <ImageModal

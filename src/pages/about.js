@@ -1,5 +1,4 @@
 import React from "react"
-
 import Seo from "../components/seo"
 import NavigationBar from "../components/navigation"
 import { motion } from "framer-motion"
