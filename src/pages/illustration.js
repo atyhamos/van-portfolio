@@ -28,7 +28,7 @@ const IllustrationPage = () => {
     filter: "blur(1px)",
   }
   const data = useStaticQuery(graphql`
-    query PhotosQuery {
+    query illustrationsQuery {
       hygraph {
         photos(first: 20) {
           image {

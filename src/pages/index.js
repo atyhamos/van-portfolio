@@ -13,7 +13,7 @@ const IndexPage = ({ location }) => {
       <motion.main
         id="main"
         initial={{ x: "5%", opacity: 0 }}
-        animate={{ x: 0, opacity: [0, 1], transition: { duration: 1 } }} // to control animation sequence
+        animate={{ x: 0, opacity: [0, 1], transition: { duration: 1 } }}
       >
         <NavigationBar />
         <WorkCarousel />
