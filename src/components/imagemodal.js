@@ -1,16 +1,18 @@
+import { GatsbyImage } from "gatsby-plugin-image"
 import React from "react"
-import { Modal, CloseButton, Image } from "react-bootstrap"
+import { Modal, CloseButton } from "react-bootstrap"
 
 const ImageModal = ({ show, hide, image }) => {
+  console.log(image)
   return (
     <Modal
       show={show}
       onHide={hide}
       className="d-flex flex-column justify-content-center"
     >
-      <Modal.Body className="d-flex flex-column container-xxl justify-content-center align-items-center w-100 h-100 bg-light">
-        <Image src={image} className="preview" />
+      <Modal.Body className="d-flex flex-column container-xxl align-items-center bg-light position-fixed fixed-top mt-5">
         <CloseButton onClick={hide}></CloseButton>
+        <GatsbyImage image={image} className="preview" />
       </Modal.Body>
     </Modal>
   )

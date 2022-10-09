@@ -16,7 +16,23 @@ module.exports = {
       },
     },
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-sharp`,
+      options: {
+        defaults: {
+          formats: [`auto`, `webp`],
+          placeholder: `blurred`,
+          quality: 25,
+          backgroundColor: `transparent`,
+          tracedSVGOptions: {},
+          blurredOptions: {},
+          jpgOptions: {},
+          pngOptions: {},
+          webpOptions: {},
+          avifOptions: {},
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -32,12 +48,20 @@ module.exports = {
       },
     },
     `gatsby-plugin-netlify`,
+    // {
+    //   resolve: "gatsby-source-graphql",
+    //   options: {
+    //     typeName: "Hygraph",
+    //     fieldName: "hygraph",
+    //     url: "https://api-ap-southeast-2.hygraph.com/v2/cl87bd94c0ffv01ujbb3f3m0f/master",
+    //   },
+    // },
     {
-      resolve: "gatsby-source-graphql",
+      resolve: "gatsby-source-graphcms",
       options: {
-        typeName: "Hygraph",
-        fieldName: "hygraph",
-        url: "https://api-ap-southeast-2.hygraph.com/v2/cl87bd94c0ffv01ujbb3f3m0f/master",
+        endpoint:
+          "https://api-ap-southeast-2.hygraph.com/v2/cl87bd94c0ffv01ujbb3f3m0f/master",
+        stages: ["PUBLISHED"],
       },
     },
   ],

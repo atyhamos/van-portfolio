@@ -6,6 +6,7 @@ import Seo from "../components/seo"
 import NavigationBar from "../components/navigation"
 import { Image } from "react-bootstrap"
 import ImageModal from "../components/imagemodal"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const IllustrationPage = () => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -28,17 +29,22 @@ const IllustrationPage = () => {
     filter: "blur(1px)",
   }
   const data = useStaticQuery(graphql`
-    query illustrationsQuery {
-      hygraph {
-        photos(first: 20) {
+    query illustrations {
+      allGraphCmsPhoto {
+        nodes {
           image {
-            url
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              placeholder: DOMINANT_COLOR
+              quality: 50
+            )
           }
         }
       }
     }
   `)
-  const illustrations = data.hygraph.photos.map(photo => photo.image.url)
+  const illustrations = data.allGraphCmsPhoto.nodes
+
   return (
     <>
       <ImageModal
@@ -58,11 +64,15 @@ const IllustrationPage = () => {
           <div className="row justify-content-between">
             {illustrations.map(illustration => {
               return (
-                <div className="col-sm-6 col-lg-4 bg-light p-0 d-flex align-content-center justify-content-center">
-                  <Image
+                <div
+                  className="col-sm-6 col-lg-4 bg-light p-0 d-flex align-content-center justify-content-center"
+                  onClick={() =>
+                    toggleModal(illustration.image.gatsbyImageData)
+                  }
+                >
+                  <GatsbyImage
+                    image={illustration.image.gatsbyImageData}
                     className="image-thumbnail"
-                    src={illustration}
-                    onClick={() => toggleModal(illustration)}
                   />
                 </div>
               )

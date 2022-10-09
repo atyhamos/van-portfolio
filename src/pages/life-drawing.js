@@ -6,6 +6,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import NavigationBar from "../components/navigation"
 import ImageModal from "../components/imagemodal"
 import { Image } from "react-bootstrap"
+import { GatsbyImage } from "gatsby-plugin-image"
 
 const LifeDrawingPage = () => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -28,17 +29,21 @@ const LifeDrawingPage = () => {
     filter: "blur(1px)",
   }
   const data = useStaticQuery(graphql`
-    query lifeDrawingsQuery {
-      hygraph {
-        lifeDrawings(first: 20) {
+    query drawings {
+      allGraphCmsLifeDrawing {
+        nodes {
           image {
-            url
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              placeholder: DOMINANT_COLOR
+              quality: 5
+            )
           }
         }
       }
     }
   `)
-  const drawings = data.hygraph.lifeDrawings.map(photo => photo.image.url)
+  const drawings = data.allGraphCmsLifeDrawing.nodes
   return (
     <>
       <ImageModal
@@ -58,11 +63,13 @@ const LifeDrawingPage = () => {
           <div className="row justify-content-between">
             {drawings.map(drawing => {
               return (
-                <div className="col-sm-3 bg-light p-0 d-flex align-content-center justify-content-center">
-                  <Image
+                <div
+                  className="col-sm-3 bg-light p-0 d-flex align-content-center justify-content-center"
+                  onClick={() => toggleModal(drawing.image.gatsbyImageData)}
+                >
+                  <GatsbyImage
                     className="image-thumbnail"
-                    src={drawing}
-                    onClick={() => toggleModal(drawing)}
+                    image={drawing.image.gatsbyImageData}
                   />
                 </div>
               )

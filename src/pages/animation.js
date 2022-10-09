@@ -3,9 +3,9 @@ import { motion } from "framer-motion"
 
 import Seo from "../components/seo"
 import NavigationBar from "../components/navigation"
-import { Image } from "react-bootstrap"
 import ImageModal from "../components/imagemodal"
-import { animations } from "../data/animations"
+import { graphql, useStaticQuery } from "gatsby"
+import { Image } from "react-bootstrap"
 
 const AnimationPage = () => {
   const [modalOpen, setModalOpen] = useState(false)
@@ -27,6 +27,18 @@ const AnimationPage = () => {
     msFilter: "blur(1px)",
     filter: "blur(1px)",
   }
+  const data = useStaticQuery(graphql`
+    query animations {
+      allGraphCmsAnimation {
+        nodes {
+          animation {
+            url
+          }
+        }
+      }
+    }
+  `)
+  const animations = data.allGraphCmsAnimation.nodes
 
   return (
     <>
@@ -43,68 +55,25 @@ const AnimationPage = () => {
       >
         <NavigationBar />
 
-        {/* <div className="container-xxl p-4 ">
-          <div className="row justify">
-            {animations.map(animation => {
-              return (
-                <div className="col-sm-6 col-lg-4 bg-light p-0 d-flex align-content-center justify-content-center">
-                  <Image
-                    className="image-thumbnail"
-                    src={animation}
-                    onClick={() => toggleModal(animation)}
-                  />
-                </div>
-              )
-            })}
-          </div>
-        </div> */}
-
         <div className="container-xxl p-4" style={{ maxWidth: "992px" }}>
           {animations.map(animation => {
             return (
               <div className="row bg-light">
                 <Image
                   className="image-thumbnail"
-                  src={animation}
-                  onClick={() => toggleModal(animation)}
+                  src={animation.animation.url}
                 />
               </div>
             )
           })}
         </div>
-        {/* </div> */}
-        {/* <div className="container-xxl p-4 ">
-          <div className="row justify-content-between">
-            <div className="col-sm-4 col-xxl-6">
-              <img
-                className="card-img-bottom thumbnail"
-                src={a1}
-                onClick={() => toggleModal(a1)}
-              />
-            </div>
-            <div className="col-sm-4 col-lg-3">
-              <img
-                className="card-img-bottom thumbnail"
-                src={a2}
-                onClick={() => toggleModal(a2)}
-              />
-            </div>
-            <div className="col-sm-4 col-lg-3">
-              <img
-                className="card-img-bottom thumbnail"
-                src={a3}
-                onClick={() => toggleModal(a3)}
-              />
-            </div>
-          </div>
-        </div> */}
       </motion.main>
     </>
   )
 }
 
 export const Head = () => (
-  <Seo title="Illustration">
+  <Seo title="Animation">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

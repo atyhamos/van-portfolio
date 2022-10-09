@@ -11,20 +11,18 @@ const AboutPage = () => {
     >
       <NavigationBar />
       <div className="container pt-4">
-        <p className="lead">
-          Hello! I'm Van, an illustrator and animator from Singapore.
-        </p>
+        <h2>Hello! I'm Van, an Illustrator and Animator from Singapore.</h2>
         <p>
           I love anything to do with myth, fantasy and romanticising daily life
           and ordinary people; and I try my best to communicate this through my
           art.
         </p>
         <p>
-          I graduated with a Bachelor of Arts in Arts and Humanities from
-          Yale-NUS College, a liberal arts university in Singapore. For my
-          capstone project, I created a webcomic about diving into memory and
-          confronting my younger self. You can read it here:
-          www.forgettingbetter.com.
+          I graduated with a{" "}
+          <strong>Bachelor of Arts in Arts and Humanities</strong> from Yale-NUS
+          College, a liberal arts university in Singapore. For my capstone
+          project, I created a webcomic about diving into memory and confronting
+          my younger self. You can read it here: www.forgettingbetter.com.
         </p>
         <p>
           I use Adobe Photoshop, Procreate, Clip Studio Paint, TV Paint, and
@@ -39,7 +37,8 @@ const AboutPage = () => {
           >
             vanessathian.ts@gmail.com
           </a>
-          . Be well!
+          <br />
+          Be well!
         </p>
       </div>
     </motion.main>

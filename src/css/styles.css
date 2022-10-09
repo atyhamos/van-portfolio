@@ -5,6 +5,7 @@
 body {
   margin: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .lead {
@@ -89,23 +90,24 @@ h1 {
 
 .image-thumbnail {
   width: 100%;
-  padding: 1em;
-  margin: 0;
+  margin: 1em;
   object-fit: cover;
   scale: 1;
   transition: scale 0.5s;
 }
 
-@media (min-width: 970px) {
-  .preview {
-    height: 80vh;
-    max-height: 90vh;
-  }
+.preview {
+  width: 100%;
+  max-width: 50vw;
+  object-fit: contain;
 }
 
-.preview {
-  max-width: 100%;
-  object-fit: contain;
+@media (min-width: 970px) {
+  .preview {
+    width: 100%;
+    max-width: 30vw;
+    max-height: 80vh;
+  }
 }
 
 .preview-modal {
